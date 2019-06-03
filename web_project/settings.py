@@ -25,7 +25,7 @@ SECRET_KEY = 'n_q(u($c=2%ffw3=pgtrbcso_tfkw9h3=qy&w78ard_jyu)4v('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['myawesomedjanoapp.herokuapp.com']
 
 
 # Application definition

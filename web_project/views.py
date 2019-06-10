@@ -5,7 +5,8 @@ from bs4 import BeautifulSoup
 import regex as re
 import pandas
 import csv
-
+import response
+from django.http import HttpResponse
 import datetime
 
 def button(request):
@@ -94,5 +95,16 @@ def output(request):
         writer = csv.writer(f)
         writer.writerow(['Title', 'Links', 'Dates'])
         writer.writerows(zip(titles, cleanlinks,dates))
-    print(filename)        
-    return render(request,'home.html',{'data':url1,'Links':cleanlinks})
+    print(filename)  
+    f.close()
+
+    with open('8.csv', 'r') as f1:
+        response = HttpResponse(f1, content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename=stat-info.csv'
+    
+    return response
+
+
+
+    #return render(request,'home.html',{'data':url1,'Links':cleanlinks})
+    
